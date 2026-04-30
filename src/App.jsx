@@ -1,35 +1,35 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import Layout from './components/layout/Layout'
-import Home from './pages/Home/Home'
-import About from './pages/About/About'
-import Services from './pages/Services/Services'
-import CaseStudies from './pages/CaseStudies/CaseStudies'
-import CaseStudyDetail from './pages/CaseStudies/CaseStudyDetail'
-import Packages from './pages/Packages/Packages'
-import Process from './pages/Process/Process'
-import Blog from './pages/Blog/Blog'
-import BlogPost from './pages/Blog/BlogPost'
-import Contact from './pages/Contact/Contact'
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-function App() {
+// 1. Import your premium global components
+import Navbar from './components/layout/Navbar';
+import Footer from './components/layout/Footer';
+
+// Placeholder components for your pages so the app doesn't crash
+const Home = () => <div className="pt-64 pb-64 text-center text-white">Home Page Engine</div>;
+// const About = () => <div className="pt-32 pb-20 text-center text-white">About Us</div>;
+// ... you will create the rest of these page components later
+
+export default function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
-          <Route path="about" element={<About />} />
-          <Route path="services" element={<Services />} />
-          <Route path="case-studies" element={<CaseStudies />} />
-          <Route path="case-studies/:id" element={<CaseStudyDetail />} />
-          <Route path="packages" element={<Packages />} />
-          <Route path="process" element={<Process />} />
-          <Route path="blog" element={<Blog />} />
-          <Route path="blog/:id" element={<BlogPost />} />
-          <Route path="contact" element={<Contact />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
-  )
-}
+    // UPGRADE: Added 'flex' and 'flex-col' to turn the app into a vertical flex container
+    <div className="flex flex-col min-h-screen bg-[#021422] font-['Barlow']">
+      <Router>
+        {/* 2. Global Navbar */}
+        <Navbar />
+        
+        {/* 3. UPGRADE: Added 'flex-grow' to push the footer to the bottom of the screen */}
+        <main className="flex-grow relative z-10 bg-[#021422] shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            {/* Add your other routes here */}
+          </Routes>
+        </main>
 
-export default App
+        {/* 4. Global Footer - Now perfectly anchored to the bottom */}
+        <Footer />
+
+      </Router>
+    </div>
+  );
+}
