@@ -4,11 +4,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 // 1. Import your premium global components
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
-
-// Placeholder components for your pages so the app doesn't crash
-const Home = () => <div className="pt-64 pb-64 text-center text-white">Home Page Engine</div>;
-// const About = () => <div className="pt-32 pb-20 text-center text-white">About Us</div>;
-// ... you will create the rest of these page components later
+import Home from './pages/Home/Home';
+ 
 
 export default function App() {
   return (
@@ -19,7 +16,7 @@ export default function App() {
         <Navbar />
         
         {/* 3. UPGRADE: Added 'flex-grow' to push the footer to the bottom of the screen */}
-        <main className="flex-grow relative z-10 bg-[#021422] shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+        <main className="flex-grow w-full relative z-10 bg-[#021422] shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
           <Routes>
             <Route path="/" element={<Home />} />
             {/* Add your other routes here */}
